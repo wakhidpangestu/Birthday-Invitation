@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Celebration Invitation | Wakhid Pangestu</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700&display=swap');
+
+        :root {
+            --gradient-primary: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            --gradient-secondary: linear-gradient(to right, #5ee7df 0%, #b490ca 100%);
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: linear-gradient(160deg, #f4f7f6 0%, #e9ecef 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 1rem;
+        }
+
+        .card-container {
+            perspective: 1000px;
+            width: 100%;
+            max-width: 26rem;
+        }
+
+        .invitation-card {
+            background: white;
+            border-radius: 1.5rem;
+            box-shadow: 
+                0 25px 50px -12px rgba(0, 0, 0, 0.08),
+                0 10px 20px -5px rgba(0, 0, 0, 0.04);
+            transform-style: preserve-3d;
+            transition: all 0.4s ease;
+            transform: rotateX(3deg) rotateY(-3deg);
+            overflow: hidden;
+        }
+
+        .invitation-card:hover {
+            transform: rotateX(0deg) rotateY(0deg) scale(1.02);
+            box-shadow: 
+                0 35px 60px -15px rgba(0, 0, 0, 0.1),
+                0 15px 25px -5px rgba(0, 0, 0, 0.05);
+        }
+
+        .header {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .input-field {
+            border: 2px solid transparent;
+            background-image: linear-gradient(white, white), 
+                              var(--gradient-secondary);
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
+            transition: all 0.3s ease;
+        }
+
+        .input-field:focus {
+            border-color: #2575fc;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(37, 117, 252, 0.2);
+        }
+
+        .rsvp-button {
+            transition: all 0.3s ease;
+            background: var(--gradient-primary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .rsvp-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: all 0.5s ease;
+        }
+
+        .rsvp-button:hover::before {
+            left: 100%;
+        }
+
+        .rsvp-button:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="card-container">
+        <div class="invitation-card">
+            <div class="header">
+                <h1 class="text-3xl font-bold tracking-tight mb-2">Birthday Bash Invitation</h1>
+                <p class="text-sm opacity-80">Your Exclusive Invitation. Get Ready to Celebrate!</p>
+            </div>
+
+            <div class="p-6 space-y-5">
+                <div>
+                    <label class="block text-gray-700 font-semibold mb-2">Your Name</label>
+                    <input 
+                        type="text" 
+                        id="guestName" 
+                        class="input-field w-full px-4 py-3 rounded-xl border-2"
+                        placeholder="Enter your full name"
+                    >
+                </div>
+
+                <div class="space-y-3">
+                    <p class="text-lg font-semibold text-gray-800">Will You Attend?</p>
+                    <div class="grid grid-cols-2 gap-3">
+                        <button 
+                            onclick="rsvp('yes')" 
+                            class="rsvp-button text-white py-3 rounded-xl font-semibold"
+                        >
+                            I'm Coming!
+                        </button>
+                        <button 
+                            onclick="rsvp('no')" 
+                            class="rsvp-button text-white py-3 rounded-xl font-semibold bg-gradient-to-r from-red-500 to-pink-500"
+                        >
+                            Can't Make It
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 rounded-xl p-4 space-y-2 text-center">
+                    <h3 class="text-xl font-bold text-gray-800">Event Details</h3>
+                    <div class="flex justify-center space-x-4 text-gray-600">
+                        <div class="flex items-center space-x-2">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/>
+                            </svg>
+                            <span>10 December 2024</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
+                            </svg>
+                            <span>7:00 PM</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 flex items-center justify-center space-x-2">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+                        </svg>
+                        <span>Party Hall, Downtown</span>
+                    </p>
+                </div>
+            </div>
+
+            <div id="responseMessage" class="hidden text-center p-4 text-white"></div>
+        </div>
+    </div>
+
+    <script>
+        function rsvp(response) {
+            const guestName = document.getElementById('guestName').value;
+            const responseMessage = document.getElementById('responseMessage');
+            
+            if (!guestName) {
+                alert('Please enter your name first!');
+                return;
+            }
+
+            responseMessage.innerHTML = response === 'yes' 
+                ? `🎉 Awesome, ${guestName}! Get ready for an epic celebration! 🎂`
+                : `We'll miss you, ${guestName}. Hope you can join us next time! 🥺`;
+            
+            responseMessage.className = response === 'yes' 
+                ? 'text-center p-4 bg-gradient-to-r from-green-400 to-green-600 text-white'
+                : 'text-center p-4 bg-gradient-to-r from-red-400 to-red-600 text-white';
+            
+            responseMessage.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
